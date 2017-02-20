@@ -4,20 +4,16 @@ import java.util.Random;
 public class CitySim9004 {
 
 
-    public static long parse(String[] args)
-            throws NullPointerException, IllegalArgumentException {
+    public static long parse(String[] args)throws NullPointerException, IllegalArgumentException {
         if (args.length == 0) {
-            System.out.println("1 command line argument (the PRNG seed) is required!");
-            throw new IllegalArgumentException("0 arguments given");
+            throw new IllegalArgumentException("0 arguments were inputted! ");
         } else if (args.length > 1) {
-            System.out.println("Only 1 command line argument (the PRNG seed) is allowed!");
-            throw new IllegalArgumentException("More than 1 arguments given");
+            throw new IllegalArgumentException("More than 1 arguments were inputted!");
         } else {
             try {
                 return Long.parseLong(args[0], 10);
             } catch (NumberFormatException nfe) {
-                System.out.println("Invalid seed given.  Must be an integer in the range [-2^63, 2^63 - 1]");
-                throw new IllegalArgumentException(nfe);
+                throw new IllegalArgumentException("Argument was not a long!");
             }
         }
     }
@@ -26,7 +22,8 @@ public class CitySim9004 {
         long seed;
         try {
             seed = parse(args);
-        } catch (IllegalArgumentException iae) {
+        } catch (IllegalArgumentException iae){ 
+            System.out.println(iae.getMessage());
             System.exit(-1);
             return;
         }
@@ -39,6 +36,7 @@ public class CitySim9004 {
             Location currentLocation = simulation.getStartLocation();
             do {
                 currentLocation = simulation.nextLocation(driver, currentLocation);
+                System.out.println(simulation.getTravelSummary());
             } while (currentLocation != Location.OUTSIDE_CITY);
             if (currentLocation.getExit().equals("Sennott")) {
                 System.out.println(driver.toString() + " has gone to Cleveland!");
