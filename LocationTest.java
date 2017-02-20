@@ -1,4 +1,5 @@
 
+
 //WILLIAM KUREK
 import org.junit.Test;
 import java.lang.reflect.Constructor;
@@ -23,7 +24,7 @@ public class LocationTest {
         });
 
    
-        final Method method = Location.class.getDeclaredMethod("setRoutesOut", Route[].class);
+        final Method method = Location.class.getDeclaredMethod("setOut", Route[].class);
         AccessController.doPrivileged(new PrivilegedAction<Void>() {
             public Void run() {
                 method.setAccessible(true);
@@ -51,7 +52,7 @@ public class LocationTest {
         });
 
 
-        final Method method = Location.class.getDeclaredMethod("setRoutesOut", Route[].class);
+        final Method method = Location.class.getDeclaredMethod("setOut", Route[].class);
         AccessController.doPrivileged(new PrivilegedAction<Void>() {
             public Void run() {
                 method.setAccessible(true);
