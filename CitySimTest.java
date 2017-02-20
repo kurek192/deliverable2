@@ -1,16 +1,17 @@
 //WILLIAM KUREK
 
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
 import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
-import java.io.ByteArrayOutputStream;
 
 public class CitySimTest {
-    private ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     //ensure the method retrieves the correct frequency of sennott
     @Test
@@ -51,18 +52,39 @@ public class CitySimTest {
     //ensure that the method correctly outputs the travel summary strings
     @Test
     public void testTravelSummary() throws Exception {
+        Random random = Mockito.mock(Random.class);
         Driver d = Mockito.mock(Driver.class);
         Location s = Mockito.mock(Location.class);
         Route r = Mockito.mock(Route.class);
         Location e = Mockito.mock(Location.class);
 
-        when(d.toString()).thenReturn("driver");
-        when(s.toString()).thenReturn("start");
-        when(r.toString()).thenReturn("route");
-        when(e.toString()).thenReturn("end");
+        Mockito.when(d.toString()).thenReturn("driver");
+        Mockito.when(s.toString()).thenReturn("start");
+        Mockito.when(r.toString()).thenReturn("route");
+        Mockito.when(e.toString()).thenReturn("end");
 
         CitySim.travelSummary(d, s, r, e);
 
-        assertEquals("driver heading from start to end via route" + System.lineSeparator(), out.toString());
+        assertEquals("driver heading from start to end via route", CitySim.getTravelSummary());
+    }
+
+    //ensure that the method returns the correct travel summary
+    @Test
+    public void testGetTravelSummary() throws Exception {
+        Random random = Mockito.mock(Random.class);
+        Driver d = Mockito.mock(Driver.class);
+        Location s = Mockito.mock(Location.class);
+        Route r = Mockito.mock(Route.class);
+        Location e = Mockito.mock(Location.class);
+
+        Mockito.when(d.toString()).thenReturn("driver");
+        Mockito.when(s.toString()).thenReturn("start");
+        Mockito.when(r.toString()).thenReturn("route");
+        Mockito.when(e.toString()).thenReturn("end");
+
+        CitySim.travelSummary(d, s, r, e);
+
+        assertEquals("driver heading from start to end via route", CitySim.getTravelSummary());
     }
 }
+
