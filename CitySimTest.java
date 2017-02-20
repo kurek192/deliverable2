@@ -1,14 +1,10 @@
 //WILLIAM KUREK
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.mockito.Mockito;
-
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Random;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -16,16 +12,6 @@ import static org.mockito.Mockito.when;
 public class CitySimTest {
 
     private ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-    @Before
-    public void setUp() {
-        System.setOut(new PrintStream(out));
-    }
-
-    @After
-    public void tearDown() {
-        System.setOut(null);
-    }
 
     //ensure the method retrieves the correct frequency of sennott
     @Test
