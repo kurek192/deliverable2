@@ -7,8 +7,10 @@ import java.util.Random;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
+import java.io.ByteArrayOutputStream;
 
 public class CitySimTest {
+    private ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     //ensure the method retrieves the correct frequency of sennott
     @Test
